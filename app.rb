@@ -18,6 +18,9 @@ class App < Sinatra::Base
 
     require 'sinatra/reloader'
     register Sinatra::Reloader
+
+    # Uncomment the following to test the error handler in development
+    #set :show_exceptions, false
   end
 
   configure :test do
@@ -44,6 +47,17 @@ class App < Sinatra::Base
   use Rack::Flash, sweep: true
 
   use Rack::Protection
+
+  not_found do
+    logger.error "Page not found: #{request.path}"
+    haml :not_found
+  end
+
+  error do
+    error = env['sinatra.error']
+    logger.error "#{error.class} - #{error.message}"
+    haml :error
+  end
 end
 
 require_relative 'routes/init'
