@@ -19,6 +19,25 @@
         .navbar-header
           %a{class: 'navbar-brand', href: '/'}
             Starter-App
+        .navbar
+          - if @user.nil?
+            %ul{class: 'nav navbar-nav navbar-right', id: 'profile-menu'}
+              %li
+                %a{href: '/login'}
+                  %b{class: 'glyphicon glyphicon-log-in'}
+                  Login
+          - else
+            %ul{class: 'nav navbar-nav navbar-right', id: 'profile-menu'}
+              %li.dropdown
+                %a.dropdown-toggle{href: '/profile', 'data-toggle': 'dropdown', role: 'button', 'data-target' => '#'}
+                  %b{class: 'glyphicon glyphicon-user'}
+                  #{@user.username}
+                  %b.caret
+                %ul.dropdown-menu{role:'menu'}
+                  %li
+                    %a{href: '/logout'}
+                      %b{class: 'glyphicon glyphicon-log-out'}
+                      Logout
     #mainContent
       .container
         - if flash.has? :error

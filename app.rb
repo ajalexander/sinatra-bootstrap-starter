@@ -48,6 +48,24 @@ class App < Sinatra::Base
 
   use Rack::Protection
 
+  before do
+    @user = session[:user].nil? ? nil : User[session[:user]]
+  end
+
+  set(:authorized) do |enforce|
+    condition do
+      return if !enforce
+      
+      if @user.nil?
+        logger.warn "Invalid or missing session: #{request.path}"
+
+        session[:user] = nil
+        flash[:warning] = "Invalid session. Please login again."
+        redirect '/login'
+      end
+    end
+  end
+
   not_found do
     logger.error "Page not found: #{request.path}"
     haml :not_found
@@ -60,4 +78,5 @@ class App < Sinatra::Base
   end
 end
 
+require_relative 'models/init'
 require_relative 'routes/init'

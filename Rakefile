@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler'
 require 'dotenv'
 
+Dir.glob('tasks/*.rake').each { |r| import r }
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e

@@ -1,6 +1,8 @@
 .bundle/
 log/
 
+db/*.db
+
 .env
 .ruby-gemset
 .ruby-version
