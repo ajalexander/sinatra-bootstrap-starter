@@ -18,6 +18,9 @@ group :development do
 end
 
 group :development, :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'cucumber'
   gem 'database_cleaner'
   gem 'rspec'
   gem 'simplecov', :require => false

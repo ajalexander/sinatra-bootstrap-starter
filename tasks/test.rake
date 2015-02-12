@@ -12,5 +12,16 @@ unless ENV['RACK_ENV'] == 'production'
       r.rspec_opts << '--format progress'
       r.rspec_opts << "--format json --out #{File.dirname(__FILE__)}/../results/rspec.json"
     end
+
+    require 'dotenv/tasks'
+
+    desc "Run Cucumber tests"
+    task :cukes => :dotenv do
+      ruby "-S cucumber #{File.dirname(__FILE__)}/../test/feature --format pretty --format json --out results/cucumber.json"
+    end
+
+    desc "Run RSpec and Cucumber tests"
+    task :all => [:specs, :cukes] do
+    end
   end
 end
