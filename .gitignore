@@ -1,5 +1,6 @@
 .bundle/
 log/
+results/
 
 db/*.db
 

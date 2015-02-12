@@ -4,6 +4,9 @@ GEM
     backports (3.6.4)
     bcrypt (3.1.10)
     coderay (1.1.0)
+    database_cleaner (1.4.0)
+    diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (1.0.2)
     haml (4.0.6)
       tilt
@@ -20,7 +23,27 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rspec (3.2.0)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
+    rspec-core (3.2.0)
+      rspec-support (~> 3.2.0)
+    rspec-expectations (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-mocks (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-support (3.2.1)
     sequel (4.19.0)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -44,12 +67,16 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bundler
+  database_cleaner
   dotenv
   haml
   pry
   rack-flash3
   rack-protection
+  rspec
   sequel
+  simplecov
+  simplecov-rcov
   sinatra
   sinatra-contrib
   sinatra-reloader
