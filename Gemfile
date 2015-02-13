@@ -27,3 +27,7 @@ group :development, :test do
   gem 'simplecov-rcov'
   gem 'sqlite3'
 end
+
+group :production do
+  gem 'mysql2'
+end
